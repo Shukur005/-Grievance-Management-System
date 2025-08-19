@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>send mail</title>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("U3W3MJDDGCk7_p2It");
+        })();
+    </script>
+</head>
+<body>
+    <input type="text" name="" id="uname">
+    <input type="text" name="" id="req">
+    <button onclick="sendEmail()">sendmail</button>
+    <script>
+        function sendEmail() {
+            var digits = '0123456789';
+
+            let OTP = '';
+            for (let i = 0; i < 4; i++) {
+                OTP += digits[Math.floor(Math.random() * 10)];
+            }
+               let OTP1=OTP;
+               var req= document.getElementById("req").value;
+               var uname= document.getElementById("uname").value;
+            
+            emailjs.send("service_nfjjqhi","template_0iim2ij",{
+                req,
+                uname,
+                OTP1,
+                reply_to: "grivencemanagement",
+                })
+                .then(
+                    res => {
+                        alert("message sent successfully");
+                    });
+        }
+    </script>
+</body>
+</html>
